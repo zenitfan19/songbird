@@ -1,0 +1,25 @@
+.answers-list {
+  overflow: hidden;
+  border: 1px solid #555;  
+  ul {
+    list-style: none; 
+    user-select: none;
+    font-size: 14px; 
+    li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #555;
+      cursor: pointer;   
+      &:last-child {
+        border-bottom: none;
+      }
+      &:hover {
+        background-color: #444;
+        .indicator {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}

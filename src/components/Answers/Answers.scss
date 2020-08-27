@@ -1,0 +1,11 @@
+.answers {
+  margin: 20px 0px;
+  display: grid;
+  grid-template-columns: calc(30% - 10px) calc(70% - 10px);
+  grid-column-gap: 20px;
+}
+
+.answer-block {  
+  background-color: #222;
+  border-radius: 10px;
+}
