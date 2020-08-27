@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './components/Header';
-import Question from './components/Question';
+import BirdInfo from './components/BirdInfo';
 import Answers from './components/Answers';
 import './App.scss';
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Question />
+      <BirdInfo />
       <Answers />
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import defaultImage from  '../../assets/images/bird.png';
+import defaultImage from  '../../../../assets/images/bird.png';
 
 const BirdImage = () => {
   return (
