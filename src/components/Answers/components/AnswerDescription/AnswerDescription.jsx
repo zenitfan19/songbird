@@ -1,11 +1,12 @@
 import React from 'react';
 
+import BirdInfo from '../../../BirdInfo';
 import './AnswerDescription.scss'
 
 const AnswerDescription = () => {
   return (
     <div className="answer-block answer-description">
-      <h1>AnswerDescription</h1>
+      <BirdInfo isSeparate={false} />
     </div>
   );
 };

@@ -2,14 +2,18 @@
   overflow: hidden;
   border: 1px solid #555;  
   ul {
+    height: 100%;
     list-style: none; 
     user-select: none;
-    font-size: 14px; 
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;         
     li {
       display: flex;
       align-items: center;
       padding: 10px;
       border-bottom: 1px solid #555;
+      flex-grow: 1;
       cursor: pointer;   
       &:last-child {
         border-bottom: none;
