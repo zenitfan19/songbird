@@ -1,0 +1,23 @@
+.tabs {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style: none;
+  border-radius: 5px;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: bold;
+  user-select: none;
+
+  li {
+    padding: 10px;
+    flex: auto;
+    text-align: center;
+    background-color: #7542ff;
+    
+    &.active {
+      background-color: #ed7300;
+    }
+  }
+}
