@@ -4,14 +4,14 @@ import Score from './components/Score';
 import Tabs from './components/Tabs';
 import './Header.scss';
 
-const Header = () => {
+const Header = ({ currentLvl, score }) => {
   return (
     <React.Fragment>
       <div className="header">
         <h1>SongBird</h1>
-        <Score />
+        <Score score={score} />
       </div>
-      <Tabs />
+      <Tabs currentLvl={currentLvl} />
     </React.Fragment>
   );
 };

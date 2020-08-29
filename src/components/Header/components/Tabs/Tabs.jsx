@@ -1,16 +1,20 @@
 import React from 'react';
 
+import birdClasses from '../../../../constants/birdClasses';
 import './Tabs.scss'
 
-const Tabs = () => {
+const Tabs = ({ currentLvl }) => {
+  const birdClassListItems = birdClasses.map((el) => {
+    const className = el.id === currentLvl ? 'active': null;
+
+    return (
+      <li className={className}>{el.name}</li>
+    );
+  });
+
   return (
     <ul className='tabs'>
-      <li className='active'>Известные</li>
-      <li>Воробьиные</li>
-      <li>Лесные птицы</li>
-      <li>Певчие птицы</li>
-      <li>Хищные птицы</li>
-      <li>Морские птицы</li>
+      {birdClassListItems}
     </ul>
   );
 };
