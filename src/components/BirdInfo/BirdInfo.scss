@@ -4,12 +4,13 @@
 }
 
 .bird-info__image {
+  height: 155px;
   border-radius: 10px;
   overflow: hidden;
   img {
     width: 200px;
     height: 155px;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -36,6 +37,7 @@
     }
   }
   .bird-text {
-    font-size: 14px;
+    margin-top: 15px;
+    font-size: 13px;
   }
 }

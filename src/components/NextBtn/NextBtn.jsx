@@ -1,10 +1,18 @@
 import React from 'react';
 
 import './NextBtn.scss';
+import birdClasses from '../../constants/birdClasses';
 
-const NextBtn = () => {
+const NextBtn = ({ currentLvl, isSolved, incrementLvl }) => {
+  const className = isSolved ? 'active' : null;
+  const btnLabel = (birdClasses.length - 1) === currentLvl ? 'Finish Game' : 'Next Level';
   return (
-    <button type="button">Next Level</button>
+    <button
+      className={className} 
+      type="button"
+      onClick={incrementLvl}>
+        {btnLabel}
+    </button>
   );
 };
 

@@ -9,17 +9,14 @@ button {
   outline: none;
   cursor: not-allowed;
   user-select: none;
-  transition: .3s;
+  transition: 1s;
   text-transform: uppercase;
   background-color: #303030;
   &.active {
     cursor: pointer;
     background-color: #00a86b;
     &:hover {
-      transform: translateY(-3px);
-    }
-    &:active {    
-      transform: translateY(0px);
-    }
+      background-color: #ed7300;
+    }   
   }
 }

@@ -8,7 +8,11 @@ const Tabs = ({ currentLvl }) => {
     const className = el.id === currentLvl ? 'active': null;
 
     return (
-      <li className={className}>{el.name}</li>
+      <li 
+        key={el.id}
+        className={className}>
+          {el.name}
+      </li>
     );
   });
 

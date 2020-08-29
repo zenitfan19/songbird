@@ -1,10 +1,8 @@
 import React from 'react';
 
-import defaultImage from  '../../../../assets/images/bird.png';
-
-const BirdImage = () => {
+const BirdImage = ({ imageSrc }) => {
   return (
-    <img src={defaultImage} alt="bird"/>
+    <img src={imageSrc} alt="bird"/>
   );
 };
 

@@ -4,11 +4,15 @@ import AnswersList from './components/AnswersList';
 import AnswerDescription from './components/AnswerDescription';
 import './Answers.scss';
 
-const Answers = () => {
+const Answers = ({ currentLvl, currentPickedTab, pickBirdClassTab }) => {
   return (
     <div className="app-block answers">
-      <AnswersList />
-      <AnswerDescription />
+      <AnswersList
+        currentLvl={currentLvl}
+        pickBirdClassTab={pickBirdClassTab} />
+      <AnswerDescription
+        currentPickedTab={currentPickedTab}
+        currentLvl={currentLvl} />
     </div>
   );
 };

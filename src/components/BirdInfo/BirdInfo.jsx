@@ -1,22 +1,27 @@
 import React from 'react';
 
 import BirdImage from './components/BirdImage';
+import birdsData from '../../constants/birds';
+import defaultImage from  '../../assets/images/bird.png';
 import './BirdInfo.scss';
 
-const BirdInfo = ({ isSeparate }) => {
+const BirdInfo = ({ isSeparate, isSolved, currentLvl, birdId }) => {
+  const [ bird ] = birdsData[currentLvl].filter((el) => el.id === birdId);  
   const bridInfoClass = isSeparate ? 'app-block bird-info' : 'bird-info bird-info_small';
-  const birdLatinName = !isSeparate ? <h3>Corvus corax</h3> : null;
-  const birdDescription = !isSeparate ? <div className='bird-text'>Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра, монархия рухнет.</div> : null;
-
+  const birdLatinName = !isSeparate ? <h3>{bird.species}</h3> : null;
+  const birdDescription = !isSeparate ? <div className='bird-text'>{bird.description}</div> : null;
+  const birdImg = isSeparate ? (isSolved ? bird.image : defaultImage) : bird.image;  
+  const birdName = isSeparate ? (isSolved ? bird.name : '*****') : bird.name;  
+  
   return (
     <div className={bridInfoClass}>
       <div className="bird-info__image">
-        <BirdImage />
+        <BirdImage imageSrc={birdImg} />
       </div>
       <div className="bird-info__data">
-        <h2>Ворон</h2>
+        <h2>{birdName}</h2>
         {birdLatinName}
-        <audio controls src=""></audio>
+        <audio controls src={bird.audio}></audio>
       </div>
       {birdDescription}
     </div>
