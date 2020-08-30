@@ -41,3 +41,13 @@
     font-size: 13px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .bird-info {
+    justify-content: center;
+
+    audio {
+      width: 200px;
+    }
+  }
+}
