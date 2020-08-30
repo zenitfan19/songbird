@@ -19,7 +19,8 @@ export default class App extends Component {
     isSolved: false,
     currentPickedTab: null,
     guessedBirdId: null,
-    userAnswers: null
+    userAnswers: null,
+    isAudioPaused: false
   };
 
   incrementLvl = () => {
@@ -32,7 +33,8 @@ export default class App extends Component {
           currentLvl: nextLvl,
           currentPickedTab: null,
           isSolved: false,
-          guessedBirdId
+          guessedBirdId,
+          isAudioPaused: false
         };
       });
     } else if (isSolved) {
@@ -54,7 +56,8 @@ export default class App extends Component {
       isSolved: false,
       currentPickedTab: null,
       guessedBirdId,
-      userAnswers
+      userAnswers,
+      isAudioPaused: false
     });
   };
 
@@ -79,6 +82,17 @@ export default class App extends Component {
       isSolved: checkAnswer,
       score: newScore
     });
+  };
+
+  pauseAudio = ({ target }) => {
+    const { isSolved, isAudioPaused } = this.state;
+
+    if (isSolved && !isAudioPaused) {
+      this.setState({
+        isAudioPaused: true
+      });
+      target.pause();
+    }
   };
 
   checkAnswer(id) {
@@ -113,7 +127,8 @@ export default class App extends Component {
                           isSeparate={true}
                           isSolved={isSolved}
                           currentLvl={currentLvl}
-                          birdId={guessedBirdId} />
+                          birdId={guessedBirdId}
+                          pauseAudio={this.pauseAudio} />
                       : null;
     const answers = !isMaxLvl 
                       ? <Answers

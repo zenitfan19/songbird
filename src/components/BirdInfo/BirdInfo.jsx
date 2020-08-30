@@ -5,7 +5,7 @@ import birdsData from '../../constants/birds';
 import defaultImage from  '../../assets/images/bird.png';
 import './BirdInfo.scss';
 
-const BirdInfo = ({ isSeparate, isSolved, currentLvl, birdId }) => {
+const BirdInfo = ({ isSeparate, isSolved, currentLvl, birdId, pauseAudio }) => {
   if (birdId !== null) {
     const [ bird ] = birdsData[currentLvl].filter((el) => el.id === birdId);  
     const bridInfoClass = isSeparate ? 'app-block bird-info' : 'bird-info bird-info_small';
@@ -13,7 +13,12 @@ const BirdInfo = ({ isSeparate, isSolved, currentLvl, birdId }) => {
     const birdDescription = !isSeparate ? <div className='bird-text'>{bird.description}</div> : null;
     const birdImg = isSeparate ? (isSolved ? bird.image : defaultImage) : bird.image;  
     const birdName = isSeparate ? (isSolved ? bird.name : '*****') : bird.name;
-    const birdSound = <audio controls src={bird.audio}></audio>;
+    const birdSoundPlayingEvent = isSeparate ? pauseAudio : null;
+    const birdSound = <audio controls src={bird.audio} onTimeUpdate={birdSoundPlayingEvent}></audio>;  
+
+    if (isSeparate && isSolved) {     
+      
+    }
     
     return (
       <div className={bridInfoClass}>
