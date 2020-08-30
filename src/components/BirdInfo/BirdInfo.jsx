@@ -12,7 +12,8 @@ const BirdInfo = ({ isSeparate, isSolved, currentLvl, birdId }) => {
     const birdLatinName = !isSeparate ? <h3>{bird.species}</h3> : null;
     const birdDescription = !isSeparate ? <div className='bird-text'>{bird.description}</div> : null;
     const birdImg = isSeparate ? (isSolved ? bird.image : defaultImage) : bird.image;  
-    const birdName = isSeparate ? (isSolved ? bird.name : '*****') : bird.name;  
+    const birdName = isSeparate ? (isSolved ? bird.name : '*****') : bird.name;
+    const birdSound = <audio controls src={bird.audio}></audio>;
     
     return (
       <div className={bridInfoClass}>
@@ -22,7 +23,7 @@ const BirdInfo = ({ isSeparate, isSolved, currentLvl, birdId }) => {
         <div className="bird-info__data">
           <h2>{birdName}</h2>
           {birdLatinName}
-          <audio controls src={bird.audio}></audio>
+          {birdSound}
         </div>
         {birdDescription}
       </div>

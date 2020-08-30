@@ -8,6 +8,8 @@ import FinalWindow from './components/FinalWindow';
 import guessBird from './utils/guessBird';
 import UserAnswers from './utils/userAnswers';
 import maxLevel from './constants/maxLevel';
+import correctAudioFile from './constants/correctAudio';
+import incorrectAudioFile from './constants/incorrectAudio';
 import './App.scss';
 
 export default class App extends Component {
@@ -66,7 +68,10 @@ export default class App extends Component {
       if (checkAnswer) {
         const wrongAnswers = userAnswers.countWrongAnswers(currentLvl);
         newScore += (5 - wrongAnswers);
-      } 
+        correctAudioFile.play();
+      } else {
+        incorrectAudioFile.play();
+      }
     }
 
     this.setState({
