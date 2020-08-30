@@ -1,0 +1,17 @@
+.final-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &.app-block {
+    padding: 40px;
+  }
+
+  img {
+    width: 256px;
+    margin-top: 40px;
+  }
+
+  button {
+    margin-top: 40px;
+  }
+}

@@ -4,8 +4,10 @@ import Header from './components/Header';
 import BirdInfo from './components/BirdInfo';
 import Answers from './components/Answers';
 import NextBtn from './components/NextBtn';
+import FinalWindow from './components/FinalWindow';
 import guessBird from './utils/guessBird';
 import UserAnswers from './utils/userAnswers';
+import maxLevel from './constants/maxLevel';
 import './App.scss';
 
 export default class App extends Component {
@@ -19,8 +21,8 @@ export default class App extends Component {
   };
 
   incrementLvl = () => {
-    const { isSolved } = this.state;
-    if (isSolved) {
+    const { isSolved, currentLvl } = this.state;
+    if (isSolved && currentLvl !== (maxLevel - 1)) {
       this.setState(({ currentLvl }) => {
         const nextLvl = currentLvl + 1;
         const guessedBirdId = guessBird(nextLvl);
@@ -31,7 +33,27 @@ export default class App extends Component {
           guessedBirdId
         };
       });
+    } else if (isSolved) {
+      this.setState(({ currentLvl }) => {
+        const nextLvl = currentLvl + 1;
+        return {
+          currentLvl: nextLvl
+        };
+      });
     }
+  };
+
+  finishGame = () => {
+    const guessedBirdId = guessBird(0);
+    const userAnswers = new UserAnswers();
+    this.setState({
+      currentLvl: 0,
+      score: 0,
+      isSolved: false,
+      currentPickedTab: null,
+      guessedBirdId,
+      userAnswers
+    });
   };
 
   pickBirdClassTab = (id) => {
@@ -62,9 +84,7 @@ export default class App extends Component {
   componentDidMount() {
     const { currentLvl } = this.state;
     const guessedBirdId = guessBird(currentLvl);
-    const userAnswers = new UserAnswers();
-
-    console.log(userAnswers);
+    const userAnswers = new UserAnswers();    
 
     this.setState({
       guessedBirdId,
@@ -73,26 +93,49 @@ export default class App extends Component {
   }
 
   render() {
-    const { currentLvl, score, isSolved, currentPickedTab, guessedBirdId, userAnswers } = this.state;    
+    const { currentLvl, score, isSolved, currentPickedTab, guessedBirdId, userAnswers } = this.state;
+    const isMaxLvl = currentLvl === maxLevel;
+
+    const header =  !isMaxLvl
+                      ? <Header
+                          currentLvl={currentLvl}
+                          score={score} />
+                      : <Header
+                          currentLvl={currentLvl - 1}
+                          score={score} />
+    const question = !isMaxLvl 
+                      ? <BirdInfo
+                          isSeparate={true}
+                          isSolved={isSolved}
+                          currentLvl={currentLvl}
+                          birdId={guessedBirdId} />
+                      : null;
+    const answers = !isMaxLvl 
+                      ? <Answers
+                          currentLvl={currentLvl}          
+                          currentPickedTab={currentPickedTab}
+                          userAnswers={userAnswers}
+                          pickBirdClassTab={this.pickBirdClassTab} />
+                      : null;
+    const nextBtn = !isMaxLvl
+                      ? <NextBtn
+                          currentLvl={currentLvl}
+                          isSolved={isSolved}
+                          incrementLvl={this.incrementLvl} />
+                      : null;
+    const finalWindow = isMaxLvl
+                          ? <FinalWindow
+                              score={score}
+                              finishGame={this.finishGame} />
+                          : null;
+    
     return (
       <div className="app">
-        <Header
-          currentLvl={currentLvl}
-          score={score} />
-        <BirdInfo
-          isSeparate={true}
-          isSolved={isSolved}
-          currentLvl={currentLvl}
-          birdId={guessedBirdId} />
-        <Answers
-          currentLvl={currentLvl}          
-          currentPickedTab={currentPickedTab}
-          userAnswers={userAnswers}
-          pickBirdClassTab={this.pickBirdClassTab} />
-        <NextBtn
-          currentLvl={currentLvl}
-          isSolved={isSolved}
-          incrementLvl={this.incrementLvl} />
+        {header}
+        {question}
+        {answers}
+        {nextBtn}
+        {finalWindow}
       </div>
     );
   }
