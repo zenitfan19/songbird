@@ -4,4 +4,10 @@
   margin-right: 10px;
   border-radius: 50%;
   background-color: #444;
+  &.right {
+    background-color: #00bc8c;
+  }
+  &.wrong {
+    background-color: #d62c1a;
+  }
 }

@@ -2,9 +2,14 @@ import React from 'react';
 
 import './Indicator.scss';
 
-const Indicator = () => {
+const Indicator = ({ isRight }) => {
+  const className = isRight === null 
+                      ? 'indicator' 
+                      : isRight 
+                        ? 'indicator right'
+                        : 'indicator wrong';
   return (
-    <div className="indicator"></div>
+    <div className={className}></div>
   );
 };
 
