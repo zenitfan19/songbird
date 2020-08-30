@@ -1,0 +1,11 @@
+.header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  
+  h1 {
+    font-family: 'Dancing Script', cursive;
+  }
+}

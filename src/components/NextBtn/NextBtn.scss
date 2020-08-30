@@ -1,0 +1,22 @@
+button {
+  font-family: "Open Sans",sans-serif;
+  padding: 10px 15px;
+  width: 100%;
+  font-weight: 700;
+  border-radius: 10px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: not-allowed;
+  user-select: none;
+  transition: 1s;
+  text-transform: uppercase;
+  background-color: #303030;
+  &.active {
+    cursor: pointer;
+    background-color: #00a86b;
+    &:hover {
+      background-color: #ed7300;
+    }   
+  }
+}

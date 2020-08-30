@@ -1,0 +1,53 @@
+.bird-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bird-info__image {
+  height: 155px;
+  border-radius: 10px;
+  overflow: hidden;
+  img {
+    width: 200px;
+    height: 155px;
+    object-fit: cover;
+  }
+}
+
+.bird-info__data {
+  flex-grow: 1;
+  padding: 10px;
+
+  h2, h3 {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #555;
+  }
+}
+
+.bird-info_small {
+  .bird-info__data {
+    h2, h3 {
+      font-size: 18px;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+    h3 {
+      font-size: 14px;
+    }
+  }
+  .bird-text {
+    margin-top: 15px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bird-info {
+    justify-content: center;
+
+    audio {
+      width: 200px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.final-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &.app-block {
+    padding: 40px;
+  }
+
+  img {
+    width: 256px;
+    margin-top: 40px;
+  }
+
+  button {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .final-window {
+    &.app-block {
+      padding: 10px;
+    }
+    h3 {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+}
